@@ -45,7 +45,7 @@ Rayfield:Notify({
 })
 
 
-local currentWalkSpeed = 30
+local currentWalkSpeed = 50
 local Slider = MainTab:CreateSlider({
     Name = "WalkSpeed",
     Range = {1, 350},
