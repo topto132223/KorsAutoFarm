@@ -71,7 +71,7 @@ local Button = MainTab:CreateButton({
 
         Rayfield:Notify({
             Title = "🐨Script Executing🐨",
-            Content = "🐨Script Executing🐨",
+            Content = "!!Wait Please!!",
             Duration = 5,
             Image = 13047715178,
             Actions = {
