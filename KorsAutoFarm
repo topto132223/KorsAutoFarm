@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "🐨Kors Eat Blobs Simulator Auto Farm🐨",
+   Name = "🐨Eat Blobs Simulator Auto Farm🐨",
    LoadingTitle = "🐨 Eat Blobs Simulator Auto Farm😎",
    LoadingSubtitle = "by 🐨Kors",
    ConfigurationSaving = {
