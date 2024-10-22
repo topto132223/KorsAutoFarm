@@ -62,7 +62,7 @@ local Slider = MainTab:CreateSlider({
 -- Eng / anti reset speed -- Rus /  анти сброс скорости
 spawn(function()
     while true do
-        wait(5)
+        wait(0.01)
         if game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
             game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = currentWalkSpeed
             print("WalkSpeed set to:", currentWalkSpeed)
