@@ -53,6 +53,22 @@ autoFarmGui.Enabled = false
 local Button = MainTab:CreateButton({
     Name = "Execute Eat Blobs Simulator Script",
     Callback = function()
+        if game.PlaceId ~= 8200787440 then
+            Rayfield:Notify({
+                Title = "🛑ERROR🛑",
+                Content = "🛑you are not in the right game🛑",
+                Duration = 5,
+                Image = 13047715178,
+                Actions = {
+                    Ignore = {
+                        Name = "Okay!",
+                        Callback = function() end
+                    },
+                },
+            })
+            return
+        end
+
         Rayfield:Notify({
             Title = "🐨Script Executing🐨",
             Content = "🐨Script Executing🐨",
@@ -69,4 +85,16 @@ local Button = MainTab:CreateButton({
         loadstring(game:HttpGet('https://raw.githubusercontent.com/topto132223/KorsAutoFarm/refs/heads/main/KorsAutoFarm'))()
         autoFarmGui.Enabled = true 
     end
+})
+
+local Toggle = MainTab:CreateToggle({
+    Name = "Auto Farm Script Toggle",
+    CurrentValue = false,
+    Flag = "Toggle1",
+    Callback = function(Value)
+        if not Value then
+            print("Cancel Executing Script")
+            autoFarmGui.Enabled = false
+        end
+    end,
 })
