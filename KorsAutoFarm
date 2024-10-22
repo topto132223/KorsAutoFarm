@@ -2,15 +2,15 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
    Name = "🐨Kors Auto Farm😎",
-   LoadingTitle = "🐨Kors Auto Farm😎",
+   LoadingTitle = "🐨 Eat Blobs Simulator Auto Farm😎",
    LoadingSubtitle = "by 🐨Kors",
    ConfigurationSaving = {
       Enabled = false,
-      FolderName = nil, -- Create a custom folder for your hub/game
+      FolderName = nil, -- 
       FileName = "🐨Kors Hub😎"
-   },
+   }, -- Eng / not necessary to read -- Rus / не обезательно читать
    Discord = {
-      Enabled = false,
+      Enabled = false, 
       Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
    },
@@ -25,8 +25,8 @@ local Window = Rayfield:CreateWindow({
       Key = {"https://pastebin.com/raw/AtgzSPWK"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
-
-local MainTab = Window:CreateTab("🏠 Home", nil) -- Title, Image
+-- Eng / you can read -- Rus / Можете прочитать
+local MainTab = Window:CreateTab("🏠 Home", nil) 
 local MainSection = MainTab:CreateSection("Main")
 
 Rayfield:Notify({
@@ -34,7 +34,7 @@ Rayfield:Notify({
    Content = "Version 1.0",
    Duration = 5,
    Image = 13047715178,
-   Actions = { -- Notification Buttons
+   Actions = { 
       Ignore = {
          Name = "Okay!",
          Callback = function()
@@ -45,17 +45,30 @@ Rayfield:Notify({
 })
 
 
+local currentWalkSpeed = 16 
 local Slider = MainTab:CreateSlider({
-   Name = "WalkSpeed",
-   Range = {1, 350},
-   Increment = 1,
-   Suffix = "Speed",
-   CurrentValue = 16,
-   Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
-   end,
+    Name = "WalkSpeed",
+    Range = {1, 350},
+    Increment = 1,
+    Suffix = "Speed",
+    CurrentValue = currentWalkSpeed,
+    Flag = "sliderws", 
+    Callback = function(Value)
+        currentWalkSpeed = Value
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = currentWalkSpeed
+    end,
 })
+
+-- Eng / anti reset speed -- Rus /  анти сброс скорости
+spawn(function()
+    while true do
+        wait(5)
+        if game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = currentWalkSpeed
+            print("WalkSpeed set to:", currentWalkSpeed)
+        end
+    end
+end)
 
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
@@ -177,7 +190,7 @@ local Slider = MainTab:CreateSlider({
         elseif Value == 4 then
             farmingSpeed = 0.1
         elseif Value == 5 then
-            farmingSpeed = 0.01
+            farmingSpeed = 0.06
         end
         print("Farming speed set to:", farmingSpeed)
     end,
@@ -188,4 +201,4 @@ local OtherSection = MainTab:CreateSection("Other")
 
 
 
-local TPTab = Window:CreateTab("🎲 Misc", nil) -- Title, Image
+local TPTab = Window:CreateTab("🎲 Misc", nil) 
