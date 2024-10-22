@@ -1,0 +1,72 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "🐨Kors Hubs🐨",
+    LoadingTitle = "🐨 Hub Loading 🐨",
+    LoadingSubtitle = "by 🐨Kors",
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = nil,
+        FileName = "🐨Kors Hub🐨"
+    },
+    Discord = {
+        Enabled = false,
+        Invite = "noinvitelink",
+        RememberJoins = true
+    },
+    KeySystem = false,
+    KeySettings = {
+        Title = "Key | 🐨Kors Hub",
+        Subtitle = "Key System",
+        Note = "Key In Discord Server",
+        FileName = "HubKorsKey",
+        SaveKey = false,
+        GrabKeyFromSite = true,
+        Key = {"https://pastebin.com/raw/AtgzSPWK"}
+    }
+})
+
+local MainTab = Window:CreateTab("🏠 Hub Scripts", nil)
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+    Title = "🐨Kors hub Loaded😎",
+    Content = "Version 1.0",
+    Duration = 5,
+    Image = 13047715178,
+    Actions = {
+        Ignore = {
+            Name = "Okay!",
+            Callback = function() end
+        },
+    },
+})
+
+local autoFarmGuiName = "AutoFarmGui"
+local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local autoFarmGui = Instance.new("ScreenGui")
+autoFarmGui.Name = autoFarmGuiName
+autoFarmGui.Parent = playerGui
+autoFarmGui.Enabled = false
+
+local Button = MainTab:CreateButton({
+    Name = "Execute Eat Blobs Simulator Script",
+    Callback = function()
+        Rayfield:Notify({
+            Title = "🐨Script Executing🐨",
+            Content = "🐨Script Executing🐨",
+            Duration = 5,
+            Image = 13047715178,
+            Actions = {
+                Ignore = {
+                    Name = "Okay!",
+                    Callback = function() end
+                },
+            },
+        })
+        print("Script Executing")
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/topto132223/KorsAutoFarm/refs/heads/main/KorsAutoFarm'))()
+        autoFarmGui.Enabled = true 
+    end
+})
