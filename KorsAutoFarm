@@ -1,13 +1,13 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "🐨Kors Auto Farm😎",
+   Name = "🐨Kors Eat Blobs Simulator Auto Farm🐨",
    LoadingTitle = "🐨 Eat Blobs Simulator Auto Farm😎",
    LoadingSubtitle = "by 🐨Kors",
    ConfigurationSaving = {
       Enabled = false,
       FolderName = nil, -- 
-      FileName = "🐨Kors Hub😎"
+      FileName = "🐨Kors Eat Blobs Simulator🐨"
    }, -- Eng / not necessary to read -- Rus / не обезательно читать
    Discord = {
       Enabled = false, 
@@ -30,8 +30,8 @@ local MainTab = Window:CreateTab("🏠 Home", nil)
 local MainSection = MainTab:CreateSection("Main")
 
 Rayfield:Notify({
-   Title = "🐨Kors hub Loaded😎",
-   Content = "Version 1.0",
+   Title = "🐨Kors Eat Blobs Simulator Script Loaded😎",
+   Content = "Version 1.1",
    Duration = 5,
    Image = 13047715178,
    Actions = { 
@@ -45,7 +45,7 @@ Rayfield:Notify({
 })
 
 
-local currentWalkSpeed = 16 
+local currentWalkSpeed = 30
 local Slider = MainTab:CreateSlider({
     Name = "WalkSpeed",
     Range = {1, 350},
@@ -65,7 +65,6 @@ spawn(function()
         wait(0.01)
         if game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
             game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = currentWalkSpeed
-            print("WalkSpeed set to:", currentWalkSpeed)
         end
     end
 end)
