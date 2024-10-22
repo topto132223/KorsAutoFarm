@@ -87,14 +87,3 @@ local Button = MainTab:CreateButton({
     end
 })
 
-local Toggle = MainTab:CreateToggle({
-    Name = "Auto Farm Script Toggle",
-    CurrentValue = false,
-    Flag = "Toggle1",
-    Callback = function(Value)
-        if not Value then
-            print("Cancel Executing Script")
-            autoFarmGui.Enabled = false
-        end
-    end,
-})
