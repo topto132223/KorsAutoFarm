@@ -59,7 +59,7 @@ local Slider = MainTab:CreateSlider({
     end,
 })
 
--- Eng / anti reset speed -- Rus /  анти сброс скорости
+-- Eng / Speed Bypass -- Rus /  анти сброс скорости
 spawn(function()
     while true do
         wait(0.01)
@@ -170,7 +170,33 @@ local Toggle = MainTab:CreateToggle({
             print("Auto farming stopped.")
         end
     end,
+}) 
+
+local Button = MainTab:CreateButton({
+    Name = "Give Vip and 2x Boost",
+    Callback = function()
+        print("Boosts activated.")
+
+        local Players = game:GetService("Players")
+        local player = Players.LocalPlayer
+
+        if player then
+            local speedBoost = player:WaitForChild("speedBoost")
+            speedBoost.Value = true
+
+            local tBoost = player:WaitForChild("tBoost")
+            tBoost.Value = true 
+
+            local vipBoost = player:WaitForChild("vipBoost")
+            vipBoost.Value = true 
+
+            local SlowedDown = player:WaitForChild("SlowedDown")
+            SlowedDown.Value = true 
+        end
+    end,
 })
+
+
 
 local Slider = MainTab:CreateSlider({
     Name = "Farming Speed",
