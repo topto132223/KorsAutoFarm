@@ -172,6 +172,29 @@ local Toggle = MainTab:CreateToggle({
     end,
 }) 
 
+local Slider = MainTab:CreateSlider({
+    Name = "Farming Speed",
+    Range = {1, 5}, 
+    Increment = 1, 
+    Suffix = "Speed",
+    CurrentValue = 1, 
+    Flag = "sliderFarmSpeed", 
+    Callback = function(Value)
+        if Value == 1 then
+            farmingSpeed = 1
+        elseif Value == 2 then
+            farmingSpeed = 0.7
+        elseif Value == 3 then
+            farmingSpeed = 0.4
+        elseif Value == 4 then
+            farmingSpeed = 0.1
+        elseif Value == 5 then
+            farmingSpeed = 0.06
+        end
+        print("Farming speed set to:", farmingSpeed)
+    end,
+}) 
+
 local Button = MainTab:CreateButton({
     Name = "Give Vip and 2x Boost",
     Callback = function()
@@ -193,31 +216,6 @@ local Button = MainTab:CreateButton({
             local SlowedDown = player:WaitForChild("SlowedDown")
             SlowedDown.Value = true 
         end
-    end,
-})
-
-
-
-local Slider = MainTab:CreateSlider({
-    Name = "Farming Speed",
-    Range = {1, 5}, 
-    Increment = 1, 
-    Suffix = "Speed",
-    CurrentValue = 1, 
-    Flag = "sliderFarmSpeed", 
-    Callback = function(Value)
-        if Value == 1 then
-            farmingSpeed = 1
-        elseif Value == 2 then
-            farmingSpeed = 0.7
-        elseif Value == 3 then
-            farmingSpeed = 0.4
-        elseif Value == 4 then
-            farmingSpeed = 0.1
-        elseif Value == 5 then
-            farmingSpeed = 0.06
-        end
-        print("Farming speed set to:", farmingSpeed)
     end,
 })
 
