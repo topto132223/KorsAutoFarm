@@ -239,6 +239,35 @@ local Button = MainTab:CreateButton({
     end,
 })
 
+local Button = MainTab:CreateButton({
+    Name = "Unlock Skins",
+    Callback = function()
+        print("Skins Unlocked")
+
+        local player = game.Players.LocalPlayer
+        local skinsFolder = player:WaitForChild("Skins")
+
+        if skinsFolder then
+            local skinNames = {
+                "Galaxy", "Code", "Rainbow", "Zebra", "Cheetah", "Water", "Karen",
+                "Danger", "Robert", "troll", "Elemental", "Magma", "Orbit", "Blobfish",
+                "Eyes", "Dread", "purplething", "FriendlyGreen", "Earth", "Moon",
+                "Mars", "8Ball", "Aurora", "Electric", "Camo", "Hearts", "Burst",
+                "Kitty", "apple", "nugget", "lobo", "sus", "Doggy", "Hypno", "Monke",
+                "Glorp", "Capybara", "Gato", "Nebula", "silly", "Rat", "Sparkles",
+                "Lava", "Pumpkin"
+            }
+
+            for _, skinName in ipairs(skinNames) do
+                local skinValue = Instance.new("BoolValue")
+                skinValue.Name = skinName
+                skinValue.Value = false
+                skinValue.Parent = skinsFolder
+            end
+        end
+    end
+})
+
+
 local OtherSection = MainTab:CreateSection("Other")
 local TPTab = Window:CreateTab("🎲 Misc", nil)
-
