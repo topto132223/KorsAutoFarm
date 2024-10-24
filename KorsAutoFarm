@@ -268,6 +268,88 @@ local Button = MainTab:CreateButton({
     end
 })
 
+local Button = MainTab:CreateButton({
+    Name = "Reward all code",
+    Callback = function()
+        print("Pasted")
+            
+            Rayfield:Notify({
+            Title = "WARNING The Reward button in the codes must be pressed manually",
+            Content = "The Reward button in the codes must be pressed manually",
+            Duration = 5,
+            Image = 13047715178,
+            Actions = { 
+               Ignore = {
+                  Name = "Okay!",
+                  Callback = function()
+                     print("The user tapped Okay!")
+                  end
+               }
+            },
+         })
+        
+        local player = game.Players.LocalPlayer
+        local popus = player:WaitForChild("PlayerGui"):WaitForChild("Popups")
+        local codesGui = popus:WaitForChild("CodesGui")
+        local openFrame = codesGui:WaitForChild("OpenFrame")
+        local content = openFrame:WaitForChild("Content")
+        local body = content:WaitForChild("Body")
+
+        local frame = body:WaitForChild("Frame")
+        local content2 = frame:WaitForChild("Content")
+        local codeFrame = content2:WaitForChild("CodeFrame")
+        local codeBar = codeFrame:WaitForChild("CodeBar")
+        local text = codeBar:WaitForChild("Text") 
+        local textBox = text:WaitForChild("TextBox") 
+
+        local UserInputService = game:GetService("UserInputService")
+
+        local codes = {
+            "SPOOKY", "GHOST", "CANDYCORN", "BLOBBY", "ABC", "YAY", "170KLIKES",
+            "YIPPEE", "FUNFUN", "165KLIKES", "FIREWORK", "BOOM", "GLORP", "UPD26",
+            "160KLIKES", "UPD25", "BUGS", "FUNSIZE", "150KLIKES", "SUMMER24",
+            "RAIN", "140KLIKES", "SPRING", "FLOWERS", "130KLIKES", "EGGS",
+            "BUNNY", "BIGGIFT", "CANDYCANE", "UPD20", "120KLIKES", "MARCH24",
+            "HEARTS", "110KLIKES", "VDAY", "100KLIKES", "SNOWING", "MOREUPDATES",
+            "WINTER", "UPD17", "90KLIKES", "XMAS", "HAPPYHOLIDAYS", "SNOWMAN",
+            "WINTERCODE", "CARCODE3", "CARCODE2", "CARCODE1", "60KLIKES",
+            "THANKSGIVING", "THANKU", "JOINTHEGROUP", "55KLIKES", "WOAHHHH",
+            "HALFWAYTHERE", "50KLIKES", "YAYMORECODES", "QWERTYUIOP", "45KLIKES",
+            "HUGECODES", "40KLIKES", "BEHAPPY", "AUGUST", "20KLIKES", "LIKES17K",
+            "SAVING", "UPD6", "LIKES16K", "PURPLESHAKE", "TOOMANYCODES", 
+            "URTHEBEST", "14KLIKES", "JULY4", "FIREWORK", "12KWOW", "UPD5",
+            "2XDAILY", "MEMORIALDAY", "ALMOSTSUMMER", "H8SCHOOL", "8THOUSAND",
+            "UPD4", "MOMDAY", "7THOUSAND"
+            
+        }
+
+        local function processCode(code)
+            print("Code paste: " .. code)
+        end
+
+        
+        for _, code in ipairs(codes) do
+            textBox.Text = code 
+            processCode(code)
+            wait(5.5) 
+        end
+
+        
+        local function onInputBegan(input, gameProcessed)
+            if input.UserInputType == Enum.UserInputType.Keyboard and not gameProcessed then
+                if input.KeyCode == Enum.KeyCode.Return then 
+                    local currentCode = textBox.Text
+                    processCode(currentCode)
+                    textBox.Text = "" 
+                end
+            end
+        end
+
+        
+        UserInputService.InputBegan:Connect(onInputBegan)
+
+    end
+})
 
 local OtherSection = MainTab:CreateSection("Other")
 local TPTab = Window:CreateTab("🎲 Misc", nil)
